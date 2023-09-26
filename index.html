@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <title>Meu Enxoval</title>
+</head>
+
+<body>
+    
+ <!-- Cabeçalho de informações do sistema -->
+    <header>
+        <div class="title">
+            <h2>Meu Enxoval</h2>
+        </div>
+        <div
+            class="banner">
+        </div>
+    </header>
+
+    <!-- Opções para adicionar um novo item -->
+    <section class="newItem">
+        <input type="text" id="newInput" placeholder="Adicionar novo item:">
+        <select class="optionsSize" type="text" id="newSize" placeholder="Tamanho:">
+            <optgroup label="Roupas">
+                <option value="P">P</option>
+                <option value="M">M</option>
+                <option value="G">G</option>
+            </optgroup>
+            <optgroup label="Calçados">
+                <option value="18">18</option>
+                <option value="19">19</option>
+                <option value="20">20</option>
+            </optgroup>
+            <optgroup label="Sem Especificação">
+                <option value="RN">RN</option>
+                <option value="--">--</option>
+            </optgroup>     
+        </select>
+        <input type="text" id="newQuantity" placeholder="Quantidade:">
+        <button onclick="newItem()" class="addBtn">Adicionar</button>
+    </section>
+
+    <!-- Tabela com items existentes -->
+    <section class="items">
+        <table id="myTable">
+            <thead id="myTableHead">
+            <tr>
+                <th>ID</th>
+                <th>Produto</th>
+                <th>Tamanho</th>
+                <th>Quantidade</th>
+                <th><img src="https://cdn-icons-png.flaticon.com/512/6324/6324826.png" alt="20px" height="20px"></th>
+                <th><img src="https://cdn-icons-png.flaticon.com/512/126/126468.png" width="15px" height="15px"></th>
+            </tr>
+            </thead>
+            <tbody id="myTableBody"></tbody>
+        </table>    
+    </section>
+    <!-- Modal de Edição -->
+    <div onclick="openEditModal()" id="editModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeEditModal()">&times;</span>
+            <h2>Editar Item</h2>
+            <form id="editForm">
+                <label for="editProductName">Produto:</label>
+                <input type="text" id="editProductName" name="editProductName" required></input>
+                <label for="editSize">Tamanho:</label>
+                <input type="text" id="editSize" name="editSize" required></input>
+                <label for="editQuantity">Quantidade:</label>
+                <input type="text" id="editQuantity" name="editQuantity" required></input>
+                <span type="submit" value="Salvar" class="saveBtn" onclick="saveEditChanges()">Salvar</span>
+            </form>
+        </div>
+    </div>
+    <!-- <button onclick="editItem()" class="editBtn"><i class="fa fa-pencil"></i></button> -->
+    <div class="btn-export">
+        <button id="export"><b>Baixar Tabela</b></button>
+    </div>
+    <script src="https://cdn.sheetjs.com/xlsx-0.20.0/package/dist/xlsx.full.min.js"></script>
+    <script src="scripts.js"></script>
+</body>
+</html>
+
+
